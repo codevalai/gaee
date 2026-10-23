@@ -1,16 +1,16 @@
 # GAEE Ω-∞
 
-GAEE is a lightweight control-plane foundation for secure, fault-tolerant orchestration with trusted execution environment readiness signals.
+GAEE is a production-oriented control-plane foundation for resilient orchestration, secure runtime monitoring, and TEE-aware governance.
 
-## Included
+## Highlights
 
-- FastAPI backend exposed on port 8000
-- backend engine with GAEE state constants
-- static control-plane frontend for GitHub Pages
-- deployment workflow for GitHub Pages
-- pytest suite with 3 passing checks
+- FastAPI API with health and status endpoints
+- fault-tolerant runtime state monitoring
+- GitHub Pages-ready control-plane front end
+- CI workflow with pytest validation
+- release checklist for shipping and deployment
 
-## Run locally
+## Local development
 
 ```bash
 python -m venv .venv
@@ -19,12 +19,27 @@ pip install -r requirements.txt
 uvicorn api.main:app --host 0.0.0.0 --port 8000
 ```
 
-## Test
+## API
+
+- `GET /` returns the GAEE status payload
+- `GET /health` returns a simple health-check response
+
+## Test suite
 
 ```bash
 pytest -q
 ```
 
-## Deployment
+Expected result:
 
-The repository includes a GitHub Pages deployment workflow for `frontend/control_plane`.
+```text
+3 passed
+```
+
+## Deploy to GitHub Pages
+
+The repository includes a Pages workflow at `.github/workflows/deploy-gaee-control-plane.yml` which publishes `frontend/control_plane`.
+
+## Release checklist
+
+See `RELEASE_CHECKLIST.md` for the complete publish and validation flow.
